@@ -1,5 +1,5 @@
 var convict = require('convict');
-
+convict.addFormats(require('convict-format-with-validator'))
 convict.addFormat({
   name: 'source-array',
   validate: function(sources, schema) {
@@ -121,6 +121,12 @@ var config = convict({
         default: null
       },
       screenshotURLs: {
+        doc: "App screenshot urls",
+        format: Array,
+        nullable: true,
+        default: null
+      },
+      screenshots: {
         doc: "App screenshots",
         format: Array,
         nullable: true,
@@ -168,7 +174,7 @@ var config = convict({
       },
       date: {
         doc: "News date in YYYY-MM-DD format",
-        format: String, //TODO: check date format
+        format: String,
         nullable: true,
         default: null
       },
